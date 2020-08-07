@@ -31,15 +31,17 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Acceptance TTD:
 
-The platform SHOULD show a list of Rick and Morty's characters sorted by default.
-Every character should display: name, gender, status, species, image, id,
-button to delete it and another one to modify it.
-Link to the full review of the character.
-The platform SHOULD display a loading's animation meanwhile the list is loading.
-The platform SHOULD display an error's message if there has been a problem with the connection.
-The platform SHOULD display more characters when the user reach to the bottom of the page.
-The platform SHOULD allow users to look for characters by using a searcher.
-The platform SHOULD sort characters when the user set one or more fields like and click on the button to apply them: - Name. (input text) - Gender. (Male, Female, Genderless or unknown) - Status. (Alive, Dead or unknown) - Species. (Human, Alien, Humanoid, Vampire, Robot)
-The platform SHOULD allow the user to add a new character to the top of the list.
-The platform SHOULD allow the user to modify an existed character.
-The platform SHOULD allow the user to delete an existed character.
+- The platform SHOULD show a list of Rick and Morty's characters sorted by default.
+  - Every character should display: name, gender, status, species, image, id, button to delete it and another one to modify it. Link to the full review of the character.
+- The platform SHOULD display a loading's animation meanwhile the list is loading.
+- The platform SHOULD display an error's message if there has been a problem with the connection.
+- The platform SHOULD display more characters when the user reach to the bottom of the page.
+- The platform SHOULD allow users to look for characters by using a searcher.
+- The platform SHOULD sort characters when the user set one or more fields like and click on the button to apply them:
+  - Name. (input text)
+  - Gender. (Male, Female, Genderless or unknown)
+  - Status. (Alive, Dead or unknown)
+  - Species. (Human, Alien, Humanoid, Vampire, Robot)
+- The platform SHOULD allow the user to add a new character to the top of the list.
+- The platform SHOULD allow the user to modify an existed character.
+- The platform SHOULD allow the user to delete an existed character.
