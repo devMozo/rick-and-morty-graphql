@@ -1,16 +1,30 @@
-interface ThemeColorsDefinition {
+export interface ThemeTypesDefinition {
   primary: string;
   secondary: string;
   info: string;
   danger: string;
   warning: string;
+  [index: string]: string;
 }
 
-interface ThemeColorsProps {
-  rgb: ThemeColorsDefinition;
-  hexa: ThemeColorsDefinition;
+export interface ThemeColors {
+  rgb: ThemeTypesDefinition;
+  hexa: ThemeTypesDefinition;
+}
+
+type ThemeShadowSize = "small" | "medium" | "big";
+
+export type RecordShadowDefinition = Record<
+  ThemeShadowSize,
+  ThemeTypesDefinition
+>;
+
+export interface ThemeShadows {
+  cross: RecordShadowDefinition;
+  centered: RecordShadowDefinition;
 }
 
 export interface ThemesCommonProps {
-  colors: ThemeColorsProps;
+  colors: ThemeColors;
+  shadows: () => ThemeShadows;
 }

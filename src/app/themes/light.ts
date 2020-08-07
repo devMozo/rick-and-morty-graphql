@@ -1,4 +1,5 @@
 import { ThemesCommonProps } from "./typing";
+import { generateShadow } from "./utilities";
 
 const theme: ThemesCommonProps = {
   colors: {
@@ -16,6 +17,9 @@ const theme: ThemesCommonProps = {
       danger: "#e71d36ff",
       warning: "#ff9f1cff",
     },
+  },
+  shadows: function () {
+    return generateShadow(this);
   },
 };
 
