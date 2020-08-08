@@ -12,10 +12,39 @@ export const CardCharacterImage = styled.img`
   object-fit: cover;
 `;
 
-export const CardCharacterTitle = styled.span``;
+export const CardCharacterContent = styled.div`
+  padding: 1rem;
+  position: relative;
+`;
 
-export const CardCharacterFeatures = styled.ul``;
+export const CardCharacterTitle = styled.span`
+  font-size: ${(props) => props.theme.fontSizes.h4};
+  color: ${(props) => props.theme.colors.rgb.secondary};
+  font-weight: 700;
+`;
 
-export const CardCharacterFeature = styled.li``;
+export const CardCharacterFeatures = styled.ul`
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
 
-export const CardCharacterID = styled.span``;
+  li {
+    font-size: ${(props) => props.theme.fontSizes.h5};
+    color: ${(props) => props.theme.colors.rgb.secondary};
+    font-weight: 200;
+
+    b {
+      color: ${(props) => props.theme.colors.rgb.info};
+      font-weight: 900;
+    }
+  }
+`;
+
+export const CardCharacterID = styled.span`
+  position: absolute;
+  right: 20px;
+  top: 0;
+  font-size: 100px;
+  color: ${(props) => props.theme.colors.rgb.secondary};
+  opacity: 0.2;
+`;

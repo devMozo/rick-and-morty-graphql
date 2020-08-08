@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { getCharacters } from "../../redux/characters";
 import Characters from "./Characters/Characters";
-import { PanelWrapper } from "./styles";
+import { PanelCharactersSection, PanelWrapper } from "./styles";
 import { PanelProps } from "./typing";
 
 class Panel extends React.PureComponent<PanelProps> {
@@ -15,7 +15,9 @@ class Panel extends React.PureComponent<PanelProps> {
   render() {
     return (
       <PanelWrapper>
-        <Characters />
+        <PanelCharactersSection>
+          <Characters />
+        </PanelCharactersSection>
       </PanelWrapper>
     );
   }

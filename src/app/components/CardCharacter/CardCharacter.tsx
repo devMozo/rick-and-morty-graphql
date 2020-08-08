@@ -1,7 +1,7 @@
 import * as React from "react";
 import Card from "../../elements/Card/Card";
 import {
-  CardCharacterFeature,
+  CardCharacterContent,
   CardCharacterFeatures,
   CardCharacterID,
   CardCharacterImage,
@@ -17,13 +17,21 @@ const CardCharacter = (props: Props) => {
     <CardCharacterWrapper>
       <Card>
         <CardCharacterImage src={character.image} alt={character.name} />
-        <CardCharacterTitle> {character.name} </CardCharacterTitle>
-        <CardCharacterFeatures>
-          <CardCharacterFeature> {character.species} </CardCharacterFeature>
-          <CardCharacterFeature> {character.status} </CardCharacterFeature>
-          <CardCharacterFeature> {character.gender} </CardCharacterFeature>
-        </CardCharacterFeatures>
-        <CardCharacterID> {character.id} </CardCharacterID>
+        <CardCharacterContent>
+          <CardCharacterTitle> {character.name} </CardCharacterTitle>
+          <CardCharacterFeatures>
+            <li>
+              <b> Specie: </b> {character.species}
+            </li>
+            <li>
+              <b> Status: </b> {character.status}
+            </li>
+            <li>
+              <b> Gender: </b> {character.gender}
+            </li>
+          </CardCharacterFeatures>
+          <CardCharacterID> {character.id} </CardCharacterID>
+        </CardCharacterContent>
       </Card>
     </CardCharacterWrapper>
   );
