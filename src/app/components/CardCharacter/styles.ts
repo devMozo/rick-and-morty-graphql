@@ -48,3 +48,38 @@ export const CardCharacterID = styled.span`
   color: ${(props) => props.theme.colors.rgb.secondary};
   opacity: 0.2;
 `;
+
+export const CardCharacterActions = styled.div`
+  padding: 0 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    margin-left: 0 0.5rem;
+    background-color: #333;
+    color: white;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+
+    &:nth-child(1) {
+      background-color: ${(props) => props.theme.colors.rgb.info};
+      margin-right: 0.5rem;
+
+      &:hover {
+        background-color: ${(props) => props.theme.colors.rgb.secondary};
+      }
+    }
+
+    &:nth-child(2) {
+      background-color: #888;
+      margin-left: 0.5rem;
+
+      &:hover {
+        background-color: ${(props) => props.theme.colors.rgb.danger};
+      }
+    }
+  }
+`;

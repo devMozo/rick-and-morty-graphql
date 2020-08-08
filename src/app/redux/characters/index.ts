@@ -18,7 +18,22 @@ export const getCharacters: AsyncThunk<any, any, {}> = createAsyncThunk(
 export default createSlice({
   name: "characters",
   initialState,
-  reducers: {},
+  reducers: {
+    removeCharacter: (state, action) => {
+      state.characters = state.characters.filter(
+        (character) => character.id !== action.payload
+      );
+    },
+    modifyCharacter: (state, action) => {
+      state.characters = state.characters.map((character) => {
+        if (character.id === action.payload.character.id) {
+          return action.payload.character;
+        }
+
+        return character;
+      });
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state, action) => {
       state.characters = action.payload;

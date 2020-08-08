@@ -1,6 +1,8 @@
 import * as React from "react";
+import { CharacterContext } from "../../containers/Panel/Characters/Characters";
 import Card from "../../elements/Card/Card";
 import {
+  CardCharacterActions,
   CardCharacterContent,
   CardCharacterFeatures,
   CardCharacterID,
@@ -12,6 +14,13 @@ import { Props } from "./typing";
 
 const CardCharacter = (props: Props) => {
   const { character } = props;
+  const { onModify, onRemove } = React.useContext(CharacterContext);
+  const handleOnModify = () => {
+    onModify(character);
+  };
+  const handleOnRemove = () => {
+    onRemove(character.id);
+  };
 
   return (
     <CardCharacterWrapper>
@@ -32,6 +41,10 @@ const CardCharacter = (props: Props) => {
           </CardCharacterFeatures>
           <CardCharacterID> {character.id} </CardCharacterID>
         </CardCharacterContent>
+        <CardCharacterActions>
+          <button onClick={handleOnModify}> Modify </button>
+          <button onClick={handleOnRemove}> Remove </button>
+        </CardCharacterActions>
       </Card>
     </CardCharacterWrapper>
   );
