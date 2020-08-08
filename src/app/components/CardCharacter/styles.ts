@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import { CardWrapper } from "../../elements/Card/styles";
 
-export const CardCharacterWrapper = styled(CardWrapper)`
-  flex: 1;
+export const CardCharacterWrapper = styled.article`
+  flex: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
 `;
 
 export const CardCharacterImage = styled.img`
   width: 100%;
-  height: 100px;
+  height: 150px;
   object-fit: cover;
 `;
 

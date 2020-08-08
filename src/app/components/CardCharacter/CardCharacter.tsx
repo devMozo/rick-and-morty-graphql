@@ -6,22 +6,27 @@ import {
   CardCharacterID,
   CardCharacterImage,
   CardCharacterTitle,
+  CardCharacterWrapper,
 } from "./styles";
 import { Props } from "./typing";
 
-export default (props: Props) => {
+const CardCharacter = (props: Props) => {
   const { character } = props;
 
   return (
-    <Card>
-      <CardCharacterImage src={character.image} alt={character.name} />
-      <CardCharacterTitle> {character.name} </CardCharacterTitle>
-      <CardCharacterFeatures>
-        <CardCharacterFeature> {character.species} </CardCharacterFeature>
-        <CardCharacterFeature> {character.status} </CardCharacterFeature>
-        <CardCharacterFeature> {character.gender} </CardCharacterFeature>
-      </CardCharacterFeatures>
-      <CardCharacterID> {character.id} </CardCharacterID>
-    </Card>
+    <CardCharacterWrapper>
+      <Card>
+        <CardCharacterImage src={character.image} alt={character.name} />
+        <CardCharacterTitle> {character.name} </CardCharacterTitle>
+        <CardCharacterFeatures>
+          <CardCharacterFeature> {character.species} </CardCharacterFeature>
+          <CardCharacterFeature> {character.status} </CardCharacterFeature>
+          <CardCharacterFeature> {character.gender} </CardCharacterFeature>
+        </CardCharacterFeatures>
+        <CardCharacterID> {character.id} </CardCharacterID>
+      </Card>
+    </CardCharacterWrapper>
   );
 };
+
+export default React.memo(CardCharacter);

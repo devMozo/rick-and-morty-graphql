@@ -17,11 +17,4 @@ describe("<ListCharacters />", () => {
 
     expect(cards).toHaveLength(MOCK_DATA.characters.length);
   });
-
-  test("Should trigger an event when the user react to the bottom of the component", () => {
-    const wrapper: ShallowWrapper = shallow(<ListCharacters {...MOCK_DATA} />);
-    const cards = wrapper.find(CardCharacter);
-
-    expect(cards).toHaveLength(MOCK_DATA.characters.length);
-  });
 });

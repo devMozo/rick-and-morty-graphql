@@ -1,4 +1,4 @@
-const { URL_RICK_AND_MORTY_API } = process.env;
+const URL_RICK_AND_MORTY_API = process.env.REACT_APP_URL_RICK_AND_MORTY_API;
 
 export type CharaterStatus = "Alive" | "Dead" | "unknown";
 export type CharacterSpecies =
@@ -18,8 +18,9 @@ export interface Character {
   image: string;
 }
 
-const URL_GET_CHARACTERS = () => {
-  return URL_RICK_AND_MORTY_API + "/character/";
+const URL_GET_CHARACTERS_API = URL_RICK_AND_MORTY_API + "/character/";
+const getCharactersAPI = () => {
+  return fetch(URL_GET_CHARACTERS_API).then((res) => res.json());
 };
 
-export { URL_GET_CHARACTERS };
+export { URL_GET_CHARACTERS_API, getCharactersAPI };

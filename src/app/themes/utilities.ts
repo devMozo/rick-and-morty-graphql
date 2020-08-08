@@ -20,14 +20,14 @@ export function generateShadow(context: ThemesCommonProps) {
 
   return {
     cross: {
-      small: getShadow("box-shadow: 10px 10px 20px -10px"),
-      medium: getShadow("box-shadow: 10px 10px 45px -10px"),
-      big: getShadow("box-shadow: 10px 10px 100px 10px"),
+      small: getShadow("box-shadow: 10px 10px 10px -10px"),
+      medium: getShadow("box-shadow: 10px 10px 25px -10px"),
+      big: getShadow("box-shadow: 10px 10px 40px 10px"),
     },
     centered: {
-      small: getShadow("box-shadow: 0px 0px 20px -10px"),
-      medium: getShadow("box-shadow: 0px 0px 45px -10px"),
-      big: getShadow("box-shadow: 0px 0px 100px 10px"),
+      small: getShadow("box-shadow: 0px 0px 10px -10px"),
+      medium: getShadow("box-shadow: 0px 0px 25px -10px"),
+      big: getShadow("box-shadow: 0px 0px 40px 10px"),
     },
   };
 }
