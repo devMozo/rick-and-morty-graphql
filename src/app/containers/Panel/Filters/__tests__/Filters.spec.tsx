@@ -71,7 +71,7 @@ describe("<Filters />", () => {
 
       expect(setStateSpy).toHaveBeenCalled();
       expect(setStateSpy).toHaveBeenCalledWith({
-        specie: option.props().value,
+        species: option.props().value,
         hasBeenModified: true,
       });
     });

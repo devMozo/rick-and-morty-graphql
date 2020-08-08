@@ -12,7 +12,7 @@ export interface Props {
 export interface State {
   name: string;
   status: CharacterStatus;
-  specie: CharacterSpecies;
+  species: CharacterSpecies;
   gender: CharacterGender;
   hasBeenModified: boolean;
 }

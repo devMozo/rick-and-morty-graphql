@@ -9,13 +9,19 @@ import {
   CharacterStatusArray,
 } from "../../../api/charaters";
 import { getCharacters } from "../../../redux/characters";
+import {
+  FiltersButton,
+  FiltersInput,
+  FiltersSelect,
+  FiltersWrapper,
+} from "./styles";
 import { Props, State } from "./typing";
 
 export class Filters extends React.PureComponent<Props, State> {
   state = {
     name: "",
     status: "" as CharacterStatus,
-    specie: "" as CharacterSpecies,
+    species: "" as CharacterSpecies,
     gender: "" as CharacterGender,
     hasBeenModified: false,
   };
@@ -36,7 +42,7 @@ export class Filters extends React.PureComponent<Props, State> {
 
   handleOnChangeSpecies = (event: React.ChangeEvent<HTMLSelectElement>) => {
     this.setState({
-      specie: event.target.value as CharacterSpecies,
+      species: event.target.value as CharacterSpecies,
       hasBeenModified: true,
     });
   };
@@ -50,44 +56,69 @@ export class Filters extends React.PureComponent<Props, State> {
 
   handleOnFilter = () => {
     const { dispatch } = this.props;
-    const { hasBeenModified } = this.state;
+    const { name, status, species, gender, hasBeenModified } = this.state;
 
     if (hasBeenModified) {
-      dispatch(getCharacters());
+      dispatch(
+        getCharacters({
+          name,
+          status,
+          species,
+          gender,
+        })
+      );
     }
   };
 
   render() {
     return (
-      <>
-        <input type="text" onChange={this.handleOnChangeName} />
+      <FiltersWrapper>
+        <FiltersInput
+          type="text"
+          placeholder="Rick Sanchez"
+          onChange={this.handleOnChangeName}
+        />
 
-        <select onChange={this.handleOnChangeStatus}>
+        <FiltersSelect onChange={this.handleOnChangeStatus}>
+          <option value="disabled" disabled selected>
+            Select a Status...
+          </option>
+          <option value={""}>All</option>
           {CharacterStatusArray.map((status) => (
             <option key={status} value={status}>
               {status}
             </option>
           ))}
-        </select>
+        </FiltersSelect>
 
-        <select onChange={this.handleOnChangeSpecies}>
+        <FiltersSelect onChange={this.handleOnChangeSpecies}>
+          <option value="disabled" disabled selected>
+            Select a Specie...
+          </option>
+          <option value={""}>All</option>
           {CharacterSpeciesArray.map((specie) => (
             <option key={specie} value={specie}>
               {specie}
             </option>
           ))}
-        </select>
+        </FiltersSelect>
 
-        <select onChange={this.handleOnChangeGender}>
+        <FiltersSelect onChange={this.handleOnChangeGender}>
+          <option value="disabled" disabled selected>
+            Select a Gender...
+          </option>
+          <option value={""}>All</option>
           {CharacterGenderArray.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
             </option>
           ))}
-        </select>
+        </FiltersSelect>
 
-        <button onClick={this.handleOnFilter}> Filter </button>
-      </>
+        <FiltersButton onClick={this.handleOnFilter}>
+          Mr. Meeseeks Filter It!
+        </FiltersButton>
+      </FiltersWrapper>
     );
   }
 }

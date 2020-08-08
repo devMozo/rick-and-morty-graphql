@@ -37,8 +37,18 @@ export interface Character {
 }
 
 const URL_GET_CHARACTERS_API = URL_RICK_AND_MORTY_API + "/character/";
-const getCharactersAPI = () => {
-  return fetch(URL_GET_CHARACTERS_API).then((res) => res.json());
+const getCharactersAPI = (filters: any) => {
+  let filtersText = "?";
+
+  for (const filter in filters) {
+    if (filters.hasOwnProperty(filter) && filters[filter]) {
+      filtersText += `${filter}=${filters[filter]}&`;
+    }
+  }
+
+  return fetch(encodeURI(URL_GET_CHARACTERS_API + filtersText)).then((res) =>
+    res.json()
+  );
 };
 
 export { URL_GET_CHARACTERS_API, getCharactersAPI };

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getCharactersAPI } from "../../api/charaters";
 import { CharactersState } from "./typing";
 
@@ -7,10 +7,13 @@ const initialState: CharactersState = {
   request: {},
 };
 
-export const getCharacters = createAsyncThunk("characters/get", async () => {
-  const response = await getCharactersAPI();
-  return response.results;
-});
+export const getCharacters: AsyncThunk<any, any, {}> = createAsyncThunk(
+  "characters/get",
+  async (filters, thunkAPI) => {
+    const response = await getCharactersAPI(filters);
+    return response.results;
+  }
+);
 
 export default createSlice({
   name: "characters",
@@ -18,7 +21,7 @@ export default createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state, action) => {
-      state.characters = [...state.characters, ...action.payload];
+      state.characters = action.payload;
       state.request.error = "";
       state.request.loading = false;
     });
