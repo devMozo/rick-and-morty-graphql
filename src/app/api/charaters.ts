@@ -1,18 +1,36 @@
 const URL_RICK_AND_MORTY_API = process.env.REACT_APP_URL_RICK_AND_MORTY_API;
 
-export type CharaterStatus = "Alive" | "Dead" | "unknown";
+export type CharacterStatus = "Alive" | "Dead" | "Unknown";
+export const CharacterStatusArray: CharacterStatus[] = [
+  "Alive",
+  "Dead",
+  "Unknown",
+];
 export type CharacterSpecies =
   | "Human"
   | "Alien"
   | "Humanoid"
   | "Vampire"
   | "Robot";
-export type CharacterGender = "Male" | "Female" | "Genderless" | "unknown";
+export const CharacterSpeciesArray: CharacterSpecies[] = [
+  "Human",
+  "Alien",
+  "Humanoid",
+  "Vampire",
+  "Robot",
+];
+export type CharacterGender = "Male" | "Female" | "Genderless" | "Unknown";
+export const CharacterGenderArray: CharacterGender[] = [
+  "Male",
+  "Female",
+  "Genderless",
+  "Unknown",
+];
 
 export interface Character {
   id: number;
   name: string;
-  status: CharaterStatus;
+  status: CharacterStatus;
   species: CharacterSpecies;
   gender: CharacterGender;
   image: string;
