@@ -80,8 +80,11 @@ export class Filters extends React.PureComponent<Props, State> {
           onChange={this.handleOnChangeName}
         />
 
-        <FiltersSelect onChange={this.handleOnChangeStatus}>
-          <option value="disabled" disabled selected>
+        <FiltersSelect
+          onChange={this.handleOnChangeStatus}
+          defaultValue="disabled"
+        >
+          <option value="disabled" disabled>
             Select a Status...
           </option>
           <option value={""}>All</option>
@@ -92,8 +95,11 @@ export class Filters extends React.PureComponent<Props, State> {
           ))}
         </FiltersSelect>
 
-        <FiltersSelect onChange={this.handleOnChangeSpecies}>
-          <option value="disabled" disabled selected>
+        <FiltersSelect
+          onChange={this.handleOnChangeSpecies}
+          defaultValue="disabled"
+        >
+          <option value="disabled" disabled>
             Select a Specie...
           </option>
           <option value={""}>All</option>
@@ -104,8 +110,11 @@ export class Filters extends React.PureComponent<Props, State> {
           ))}
         </FiltersSelect>
 
-        <FiltersSelect onChange={this.handleOnChangeGender}>
-          <option value="disabled" disabled selected>
+        <FiltersSelect
+          onChange={this.handleOnChangeGender}
+          defaultValue="disabled"
+        >
+          <option value="disabled" disabled>
             Select a Gender...
           </option>
           <option value={""}>All</option>

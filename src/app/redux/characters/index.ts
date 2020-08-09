@@ -1,4 +1,9 @@
-import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  AsyncThunk,
+  createAsyncThunk,
+  createSlice,
+  nanoid,
+} from "@reduxjs/toolkit";
 import { getCharactersAPI } from "../../api/charaters";
 import { CharactersState } from "./typing";
 
@@ -19,6 +24,15 @@ export default createSlice({
   name: "characters",
   initialState,
   reducers: {
+    createCharacter: (state, action) => {
+      state.characters = [
+        {
+          ...action.payload.character,
+          id: nanoid(),
+        },
+        ...state.characters,
+      ];
+    },
     removeCharacter: (state, action) => {
       state.characters = state.characters.filter(
         (character) => character.id !== action.payload

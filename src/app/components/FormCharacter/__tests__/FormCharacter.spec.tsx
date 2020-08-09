@@ -93,6 +93,20 @@ describe("<FormCharacter />", () => {
     });
   });
 
+  it("Should dispatch an action on click onto the creation's button", () => {
+    const mockedFunctionToModify = jest.fn();
+    component = mount(
+      <ThemeProvider theme={theme}>
+        <FormCharacter onCreate={mockedFunctionToModify} />
+      </ThemeProvider>
+    );
+    const buttonToSubmit = component.find("button");
+
+    buttonToSubmit.simulate("click");
+
+    expect(mockedFunctionToModify).toHaveBeenCalled();
+  });
+
   describe("Editing Mode", () => {
     const MOCK_DATA = {
       character: MOCK_LIST_CHARACTERS.results[0] as Character,
@@ -106,10 +120,51 @@ describe("<FormCharacter />", () => {
       );
     });
 
+    it('Should display the "Editing" + the given name as a title', () => {
+      const inputName = component.find("h3").at(0);
+
+      expect(inputName.text()).toContain("Editing " + MOCK_DATA.character.name);
+    });
+
     it("Should display the given name into input texts", () => {
       const inputName = component.find("input").at(0);
 
-      expect(inputName.prop("value")).toBe(MOCK_DATA.character.name);
+      expect(inputName.prop("defaultValue")).toBe(MOCK_DATA.character.name);
+    });
+
+    it("Should display the given status into select box", () => {
+      const selectBox = component.find("select").at(0);
+
+      expect(selectBox.prop("defaultValue")).toBe(MOCK_DATA.character.status);
+    });
+
+    it("Should display the given species into select box", () => {
+      const selectBox = component.find("select").at(1);
+
+      expect(selectBox.prop("defaultValue")).toBe(MOCK_DATA.character.species);
+    });
+
+    it("Should display the given gender into select box", () => {
+      const selectBox = component.find("select").at(2);
+
+      expect(selectBox.prop("defaultValue")).toBe(MOCK_DATA.character.gender);
+    });
+
+    it("Should dispatch an action on click onto the modification's button", () => {
+      const mockedFunctionToModify = jest.fn();
+      component = mount(
+        <ThemeProvider theme={theme}>
+          <FormCharacter
+            character={MOCK_DATA.character}
+            onModify={mockedFunctionToModify}
+          />
+        </ThemeProvider>
+      );
+      const buttonToSubmit = component.find("button");
+
+      buttonToSubmit.simulate("click");
+
+      expect(mockedFunctionToModify).toHaveBeenCalled();
     });
   });
 });

@@ -14,16 +14,22 @@ const Characters = (
   }
 ) => {
   const { characters, request, dispatch } = props;
-  const [formActivated, showForm] = React.useState(!false);
+  const [form, showForm] = React.useState({
+    active: false,
+    character: {},
+  });
   const onRemove = (characterId: number) => {
     dispatch(charactersSlice.actions.removeCharacter(characterId));
   };
   const onModify = (character: Character) => {
-    dispatch(charactersSlice.actions.modifyCharacter(character));
+    showForm({
+      active: true,
+      character,
+    });
   };
 
-  if (formActivated) {
-    return <FormCharacter />;
+  if (form.active) {
+    return <FormCharacter character={form.character as Character} />;
   }
 
   return (

@@ -15,13 +15,17 @@ import {
 } from "./styles";
 import { Props, State } from "./typing";
 
-export class FormCharacter extends React.PureComponent<Props, State> {
+class FormCharacter extends React.PureComponent<Props, State> {
   state = {
+    id: 0,
     name: "",
+    image: "",
     status: "" as CharacterStatus,
     species: "" as CharacterSpecies,
     gender: "" as CharacterGender,
   };
+
+  editingMode = () => Boolean(this.state.id > 0);
 
   handleOnChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
@@ -47,22 +51,53 @@ export class FormCharacter extends React.PureComponent<Props, State> {
     });
   };
 
-  handleOnFilter = () => {
-    const { name, status, species, gender } = this.state;
+  handleOnModify = () => {
+    const { onModify } = this.props;
+
+    if (onModify) {
+      onModify(this.state);
+    }
   };
 
+  handleOnCreate = () => {
+    const { onCreate } = this.props;
+
+    if (onCreate) {
+      onCreate(this.state);
+    }
+  };
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    if (props.character) {
+      return props.character;
+    }
+
+    return state;
+  }
+
   render() {
+    const { name, status, species, gender } = this.state;
+
     return (
       <FormCharacterWrapper>
-        <h3> Create New One </h3>
+        {this.editingMode() ? (
+          <h3> Editing {name} </h3>
+        ) : (
+          <h3> Create New One </h3>
+        )}
+
         <FormCharacterInput
           type="text"
+          defaultValue={name}
           placeholder="Rick Sanchez"
           onChange={this.handleOnChangeName}
         />
 
-        <FormCharacterSelect onChange={this.handleOnChangeStatus}>
-          <option value="disabled" disabled selected>
+        <FormCharacterSelect
+          defaultValue={status}
+          onChange={this.handleOnChangeStatus}
+        >
+          <option value="disabled" disabled>
             Select a Status...
           </option>
           {CharacterStatusArray.map((status) => (
@@ -72,8 +107,11 @@ export class FormCharacter extends React.PureComponent<Props, State> {
           ))}
         </FormCharacterSelect>
 
-        <FormCharacterSelect onChange={this.handleOnChangeSpecies}>
-          <option value="disabled" disabled selected>
+        <FormCharacterSelect
+          defaultValue={species}
+          onChange={this.handleOnChangeSpecies}
+        >
+          <option value="disabled" disabled>
             Select a Specie...
           </option>
           {CharacterSpeciesArray.map((specie) => (
@@ -83,8 +121,11 @@ export class FormCharacter extends React.PureComponent<Props, State> {
           ))}
         </FormCharacterSelect>
 
-        <FormCharacterSelect onChange={this.handleOnChangeGender}>
-          <option value="disabled" disabled selected>
+        <FormCharacterSelect
+          defaultValue={gender}
+          onChange={this.handleOnChangeGender}
+        >
+          <option value="disabled" disabled>
             Select a Gender...
           </option>
           {CharacterGenderArray.map((gender) => (
@@ -94,9 +135,15 @@ export class FormCharacter extends React.PureComponent<Props, State> {
           ))}
         </FormCharacterSelect>
 
-        <FormCharacterButton onClick={this.handleOnFilter}>
-          Let Modify It!
-        </FormCharacterButton>
+        {this.editingMode() ? (
+          <FormCharacterButton onClick={this.handleOnModify}>
+            Let Modify It!
+          </FormCharacterButton>
+        ) : (
+          <FormCharacterButton onClick={this.handleOnCreate}>
+            Wubba Lubba dub-dub
+          </FormCharacterButton>
+        )}
       </FormCharacterWrapper>
     );
   }
