@@ -17,8 +17,15 @@ describe("<Filters />", () => {
   let component: ReactWrapper<{}, {}, FilterTesting>;
 
   beforeEach(() => {
-    component = mount(<FilterTesting />);
-    setStateSpy = jest.spyOn(component.instance(), "setState");
+    component = mount(
+      <ThemeProvider theme={theme}>
+        <FilterTesting />
+      </ThemeProvider>
+    );
+    setStateSpy = jest.spyOn(
+      component.find(FilterTesting).instance(),
+      "setState"
+    );
   });
 
   afterEach(() => {
@@ -116,12 +123,17 @@ describe("<Filters />", () => {
     });
 
     it("Should dispatch an action if there is changes on the fields", () => {
-      fetchMock.get(URL_GET_CHARACTERS_API, {}, { overwriteRoutes: false });
+      const valueToTest = "TestingURL";
+      fetchMock.get(
+        URL_GET_CHARACTERS_API + `name=${valueToTest}&`,
+        {},
+        { overwriteRoutes: false }
+      );
 
       const buttonToSubmit = component.find("button");
       const inputName = component.find("input").at(0);
 
-      inputName.instance().value = "Testing Dispatch Action";
+      inputName.instance().value = valueToTest;
       inputName.simulate("change");
 
       buttonToSubmit.simulate("click");

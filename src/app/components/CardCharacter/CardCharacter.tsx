@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CharacterContext } from "../../containers/Panel/Characters/Characters";
+import { CharacterContext } from "../../containers/Panel/Characters/context";
 import Card from "../../elements/Card/Card";
 import {
   CardCharacterActions,

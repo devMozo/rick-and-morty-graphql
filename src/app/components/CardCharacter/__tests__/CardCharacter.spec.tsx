@@ -2,7 +2,7 @@ import { fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 import { ThemeProvider } from "styled-components";
 import { Character } from "../../../api/charaters";
-import { CharacterContext } from "../../../containers/Panel/Characters/Characters";
+import { CharacterContext } from "../../../containers/Panel/Characters/context";
 import theme from "../../../themes/light";
 import CardCharacter from "../CardCharacter";
 import { Props } from "../typing";

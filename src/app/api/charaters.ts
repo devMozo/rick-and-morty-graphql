@@ -36,9 +36,9 @@ export interface Character {
   image: string;
 }
 
-const URL_GET_CHARACTERS_API = URL_RICK_AND_MORTY_API + "/character/";
+const URL_GET_CHARACTERS_API = URL_RICK_AND_MORTY_API + "/character/?";
 const getCharactersAPI = (filters: any) => {
-  let filtersText = "?";
+  let filtersText = "";
 
   for (const filter in filters) {
     if (filters.hasOwnProperty(filter) && filters[filter]) {

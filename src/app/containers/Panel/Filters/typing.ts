@@ -6,7 +6,7 @@ import {
 } from "../../../api/charaters";
 
 export interface Props {
-  dispatch: ThunkDispatch<any, any, any>;
+  dispatch?: ThunkDispatch<any, any, any>;
 }
 
 export interface State {
