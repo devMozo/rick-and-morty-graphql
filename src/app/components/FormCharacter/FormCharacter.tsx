@@ -17,7 +17,7 @@ import { Props, State } from "./typing";
 
 export class FormCharacter extends React.PureComponent<Props, State> {
   state = {
-    name: this.props.character.name || "",
+    name: "",
     status: "" as CharacterStatus,
     species: "" as CharacterSpecies,
     gender: "" as CharacterGender,

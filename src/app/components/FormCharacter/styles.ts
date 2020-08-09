@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ThemesCommonProps } from "../../themes/typing";
 
-export const FormModifyCharacterWrapper = styled.section`
+export const FormCharacterWrapper = styled.section`
   max-width: 400px;
   margin: 2rem auto;
   padding: 0.5rem 1rem 1rem;
@@ -11,7 +11,7 @@ export const FormModifyCharacterWrapper = styled.section`
     (props.theme as ThemesCommonProps).shadows().centered.small.secondary};
 `;
 
-export const FormModifyCharacterInput = styled.input`
+export const FormCharacterInput = styled.input`
   width: 100%;
   padding: 0.5rem 1rem;
   box-sizing: border-box;
@@ -29,7 +29,7 @@ export const FormModifyCharacterInput = styled.input`
   }
 `;
 
-export const FormModifyCharacterSelect = styled.select`
+export const FormCharacterSelect = styled.select`
   width: 100%;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -47,7 +47,7 @@ export const FormModifyCharacterSelect = styled.select`
   }
 `;
 
-export const FormModifyCharacterButton = styled.button`
+export const FormCharacterButton = styled.button`
   width: 100%;
   margin-top: 2rem;
   padding: 1rem;
