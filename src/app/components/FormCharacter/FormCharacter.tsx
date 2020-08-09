@@ -64,9 +64,16 @@ class FormCharacter extends React.PureComponent<Props, State> {
 
   handleOnCreate = () => {
     const { onCreate } = this.props;
+    const { name, status, species, gender } = this.state;
 
     if (onCreate) {
-      onCreate(this.state);
+      onCreate({
+        ...this.state,
+        name: name || "Not defined",
+        status: status || CharacterStatusArray[0],
+        species: species || CharacterSpeciesArray[0],
+        gender: gender || CharacterGenderArray[0],
+      });
     }
   };
 

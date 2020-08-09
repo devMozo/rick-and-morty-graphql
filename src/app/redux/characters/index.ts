@@ -27,8 +27,9 @@ export default createSlice({
     createCharacter: (state, action) => {
       state.characters = [
         {
-          ...action.payload.character,
-          id: nanoid(),
+          ...action.payload,
+          id: nanoid(2),
+          image: "./logo192.png",
         },
         ...state.characters,
       ];
