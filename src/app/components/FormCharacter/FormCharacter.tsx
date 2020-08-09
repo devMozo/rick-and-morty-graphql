@@ -9,6 +9,7 @@ import {
 } from "../../api/charaters";
 import {
   FormCharacterButton,
+  FormCharacterButtonCancel,
   FormCharacterInput,
   FormCharacterSelect,
   FormCharacterWrapper,
@@ -16,14 +17,16 @@ import {
 import { Props, State } from "./typing";
 
 class FormCharacter extends React.PureComponent<Props, State> {
-  state = {
-    id: 0,
-    name: "",
-    image: "",
-    status: "" as CharacterStatus,
-    species: "" as CharacterSpecies,
-    gender: "" as CharacterGender,
-  };
+  state = this.props.character
+    ? this.props.character
+    : {
+        id: 0,
+        name: "",
+        image: "",
+        status: "" as CharacterStatus,
+        species: "" as CharacterSpecies,
+        gender: "" as CharacterGender,
+      };
 
   editingMode = () => Boolean(this.state.id > 0);
 
@@ -67,13 +70,13 @@ class FormCharacter extends React.PureComponent<Props, State> {
     }
   };
 
-  static getDerivedStateFromProps(props: Props, state: State) {
-    if (props.character) {
-      return props.character;
-    }
+  handleOnCancel = () => {
+    const { onCancel } = this.props;
 
-    return state;
-  }
+    if (onCancel) {
+      onCancel();
+    }
+  };
 
   render() {
     const { name, status, species, gender } = this.state;
@@ -144,6 +147,9 @@ class FormCharacter extends React.PureComponent<Props, State> {
             Wubba Lubba dub-dub
           </FormCharacterButton>
         )}
+        <FormCharacterButtonCancel onClick={this.handleOnCancel}>
+          Cancel
+        </FormCharacterButtonCancel>
       </FormCharacterWrapper>
     );
   }

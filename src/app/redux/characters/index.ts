@@ -39,13 +39,11 @@ export default createSlice({
       );
     },
     modifyCharacter: (state, action) => {
-      state.characters = state.characters.map((character) => {
-        if (character.id === action.payload.character.id) {
-          return action.payload.character;
-        }
+      const index = state.characters.findIndex(
+        (character) => character.id === action.payload.id
+      );
 
-        return character;
-      });
+      state.characters[index] = action.payload;
     },
   },
   extraReducers: (builder) => {

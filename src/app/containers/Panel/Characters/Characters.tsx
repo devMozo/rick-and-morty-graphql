@@ -18,25 +18,41 @@ const Characters = (
     active: false,
     character: {},
   });
-  const onRemove = (characterId: number) => {
-    dispatch(charactersSlice.actions.removeCharacter(characterId));
-  };
-  const onModify = (character: Character) => {
+  const openForm = (character: Character) => {
     showForm({
       active: true,
       character,
     });
   };
+  const closeForm = () => {
+    showForm({
+      active: false,
+      character: {},
+    });
+  };
+  const onRemove = (characterId: number) => {
+    dispatch(charactersSlice.actions.removeCharacter(characterId));
+  };
+  const onModify = (character: Character) => {
+    dispatch(charactersSlice.actions.modifyCharacter(character));
+    closeForm();
+  };
 
   if (form.active) {
-    return <FormCharacter character={form.character as Character} />;
+    return (
+      <FormCharacter
+        character={form.character as Character}
+        onModify={onModify}
+        onCancel={closeForm}
+      />
+    );
   }
 
   return (
     <DummieCharacters
       characters={characters}
       request={request}
-      onModify={onModify}
+      onModify={openForm}
       onRemove={onRemove}
     />
   );

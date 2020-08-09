@@ -63,3 +63,21 @@ export const FormCharacterButton = styled.button`
     background-color: ${(props) => props.theme.colors.rgb.info};
   }
 `;
+
+export const FormCharacterButtonCancel = styled.button`
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: ${(props) => props.theme.fontSizes.h5};
+  border: 1px solid ${(props) => props.theme.colors.rgb.secondary};
+  border-radius: 0;
+  color: ${(props) => props.theme.colors.rgb.secondary};
+  background-color: ${(props) => props.theme.colors.rgb.primary};
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.rgb.secondary};
+    color: ${(props) => props.theme.colors.rgb.primary};
+  }
+`;
