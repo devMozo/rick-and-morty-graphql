@@ -58,7 +58,7 @@ export class Filters extends React.PureComponent<Props, State> {
     const { dispatch } = this.props;
     const { name, status, species, gender, hasBeenModified } = this.state;
 
-    if (hasBeenModified) {
+    if (hasBeenModified && dispatch) {
       dispatch(
         getCharacters({
           name,
@@ -73,6 +73,7 @@ export class Filters extends React.PureComponent<Props, State> {
   render() {
     return (
       <FiltersWrapper>
+        <h3> Filters </h3>
         <FiltersInput
           type="text"
           placeholder="Rick Sanchez"

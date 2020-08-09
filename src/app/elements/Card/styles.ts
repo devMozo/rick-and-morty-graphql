@@ -6,10 +6,10 @@ export const CardWrapper = styled.section`
     (props.theme as ThemesCommonProps).colors.rgb.primary};
   transition: 0.3s;
   ${(props) =>
-    (props.theme as ThemesCommonProps).shadows().cross.small.secondary};
+    (props.theme as ThemesCommonProps).shadows().centered.small.secondary};
 
   &:hover {
     ${(props) =>
-      (props.theme as ThemesCommonProps).shadows().cross.medium.secondary};
+      (props.theme as ThemesCommonProps).shadows().centered.medium.secondary};
   }
 `;

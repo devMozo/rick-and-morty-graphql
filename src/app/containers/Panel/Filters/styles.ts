@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import { ThemesCommonProps } from "../../../themes/typing";
 
 export const FiltersWrapper = styled.section`
-  padding-top: 2rem;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem 1rem;
+  background-color: ${(props) =>
+    (props.theme as ThemesCommonProps).colors.rgb.primary};
+  ${(props) =>
+    (props.theme as ThemesCommonProps).shadows().centered.small.secondary};
 `;
 
 export const FiltersInput = styled.input`
