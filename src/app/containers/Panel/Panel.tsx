@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getCharacters } from "../../redux/characters";
 import Characters from "./Characters/Characters";
 import Filters from "./Filters/Filters";
+import Header from "./Header/Header";
 import {
   PanelCharactersSection,
   PanelFiltersSection,
@@ -24,6 +25,7 @@ class Panel extends React.PureComponent<PanelProps> {
           <Filters />
         </PanelFiltersSection>
         <PanelCharactersSection>
+          <Header />
           <Characters />
         </PanelCharactersSection>
       </PanelWrapper>

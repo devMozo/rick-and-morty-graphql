@@ -100,7 +100,7 @@ describe("<FormCharacter />", () => {
         <FormCharacter onCreate={mockedFunctionToModify} />
       </ThemeProvider>
     );
-    const buttonToSubmit = component.find("button");
+    const buttonToSubmit = component.find("button").at(0);
 
     buttonToSubmit.simulate("click");
 
@@ -160,7 +160,7 @@ describe("<FormCharacter />", () => {
           />
         </ThemeProvider>
       );
-      const buttonToSubmit = component.find("button");
+      const buttonToSubmit = component.find("button").at(0);
 
       buttonToSubmit.simulate("click");
 
