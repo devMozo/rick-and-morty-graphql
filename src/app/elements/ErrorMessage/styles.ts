@@ -1,13 +1,10 @@
 import styled from "styled-components";
-import { ThemesCommonProps } from "../../themes/typing";
 
-export const CardWrapper = styled.section`
-  background-color: ${(props) =>
-    (props.theme as ThemesCommonProps).colors.rgb.primary};
-  transition: 0.3s;
-  ${(props) => (props.theme as ThemesCommonProps).shadows().cross.big}
-
-  &:hover {
-    ${(props) => (props.theme as ThemesCommonProps).shadows().cross.medium}
-  }
+export const ErrorMessageWrapper = styled.section`
+  width: 100%;
+  text-align: center;
+  padding: 3rem 0;
+  font-size: ${(props) => props.theme.fontSizes.h3};
+  color: ${(props) => props.theme.colors.rgb.danger};
+  opacity: 0.5;
 `;

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { CardWrapper } from "./styles";
+import { LoadingIndicatorWrapper } from "./styles";
 
 export default () => {
-  return <CardWrapper> Loading </CardWrapper>;
+  return <LoadingIndicatorWrapper />;
 };

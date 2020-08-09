@@ -1,13 +1,20 @@
 import styled from "styled-components";
-import { ThemesCommonProps } from "../../themes/typing";
 
-export const CardWrapper = styled.section`
-  background-color: ${(props) =>
-    (props.theme as ThemesCommonProps).colors.rgb.primary};
-  transition: 0.3s;
-  ${(props) => (props.theme as ThemesCommonProps).shadows().cross.big}
+export const LoadingIndicatorWrapper = styled.section`
+  width: 40px;
+  height: 40px;
+  margin: 3rem auto;
+  border: 4px solid #eee;
+  border-top: 4px solid ${(props) => props.theme.colors.rgb.info};
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
 
-  &:hover {
-    ${(props) => (props.theme as ThemesCommonProps).shadows().cross.medium}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;
