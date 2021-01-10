@@ -16,6 +16,7 @@ export const getCharacters: AsyncThunk<any, any, {}> = createAsyncThunk(
   "characters/get",
   async (filters, thunkAPI) => {
     const response = await getCharactersAPI(filters);
+    console.log(response);
     return response.results;
   }
 );
